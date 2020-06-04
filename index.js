@@ -41,7 +41,7 @@ class HTML
 		this.baseDirPath = _baseDirPath;
 	}
 
-	render(subPath, data, options={})
+	render(subPath, data={}, options={})
 	{
 		const self=this;
 		const htmlRaw = require(path.join(this.baseDirPath, subPath + ".js"))(data, {
