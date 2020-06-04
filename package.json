@@ -1,0 +1,15 @@
+{
+	"name"         : "@sembiance/html",
+	"version"      : "1.0.0",
+	"description"  : "Quick and easy to use HTML templates based on native JS tagged literal functions",
+	"author"       : "Robert Schultz <robert@cosmicrealms.com>",
+	"private"      : true,
+	"license"      : "UNLICENSED",
+	"engines"      : { "node" : ">=14" },
+	"dependencies" : {
+		"@sembiance/xu"    : "file:/mnt/compendium/DevLab/node-modules/xu",
+		"@sembiance/xutil" : "file:/mnt/compendium/DevLab/node-modules/xutil",
+		"html-minifier"    : "~4.0.0",
+		"tiptoe"           : "file:/mnt/compendium/DevLab/node-modules/tiptoe"
+	}
+}
