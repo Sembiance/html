@@ -44,11 +44,23 @@ class HTML
 	render(subPath, data={}, options={})
 	{
 		const self=this;
-		const htmlRaw = require(path.join(this.baseDirPath, subPath + ".js"))(data, {
+		const requirePath = path.join(this.baseDirPath, subPath + ".js");
+		delete require.cache[require.resolve(requirePath)];
+		let htmlRaw = require(requirePath)(data, {
 			html : this.html.bind(this),
 			include(includeSubPath, includeData=data) { return self.render(includeSubPath, includeData, {skipMinify : true}); } });
 
-		return options.skipMinify ? htmlRaw : minify(htmlRaw, HTML_MINIFY_OPTIONS);
+		const minifyOptions = {...HTML_MINIFY_OPTIONS};
+		if(options.preserveWhitespace)
+			minifyOptions.collapseWhitespace = false;
+
+		if(!options.skipMinify)
+		{
+			try { htmlRaw = minify(htmlRaw, minifyOptions); }
+			catch(err) {}
+		}
+
+		return htmlRaw;
 	}
 
 	html(strs, ...vals)
