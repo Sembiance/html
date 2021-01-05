@@ -44,7 +44,7 @@ class HTML
 	render(subPath, data={}, options={})
 	{
 		const self=this;
-		const requirePath = path.join(this.baseDirPath, subPath + ".js");
+		const requirePath = path.join(this.baseDirPath, `${subPath}.js`);
 		delete require.cache[require.resolve(requirePath)];
 		let htmlRaw = require(requirePath)(data, {
 			html : this.html.bind(this),
