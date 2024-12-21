@@ -1,5 +1,5 @@
 "use strict";
-/* eslint-disable node/global-require */
+/* eslint-disable n/global-require */
 const XU = require("@sembiance/xu"),
 	{minify} = require("html-minifier"),
 	path = require("path");
@@ -57,7 +57,7 @@ class HTML
 		if(!options.skipMinify)
 		{
 			try { htmlRaw = minify(htmlRaw, minifyOptions); }
-			catch(err) {}
+			catch {}
 		}
 
 		return htmlRaw;
